@@ -6,24 +6,46 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/90510d1633.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  
+  <header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/"><span>Bookers</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <li>
+            <%= link_to root_path, class: "nav-link text-light" do %>
+              <i class="fa-solid fa-house"></i> home
+            <% end %>
+          </li>
+          <li>
+            <%= link_to about_path, class: "nav-link text-light" do %>
+              <i class="fa-solid fa-link"></i> link
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_registration_path, class: "nav-link text-light" do %>
+              <i class="fa-solid fa-user-plus"></i> log in
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_session_path, class: "nav-link text-light" do %>
+              <i class="fa-solid fa-right-to-bracket"></i> link
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
   <body>
-    <header>
-      <% if user_signed_in? %>
-      <li>
-        <%= link_to"Log out", destroy_user_path, method: :delete %>
-      </li>
-      <% else %>
-      <li>
-        <%= link_to"Sign up", new_user_registration_path, %>
-      </li>
-      <li>        
-        <%= link_to"Log in", new_user_session_path, %>
-      </li>
-    </header>
       <%= yield %>
   </body>
 </html>
