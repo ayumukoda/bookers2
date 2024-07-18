@@ -36,8 +36,8 @@
             <% end %>
           </li>
           <li>
-            <%= link_to new_user_session_path, class: "nav-link text-light" do %>
-              <i class="fa-solid fa-right-to-bracket"></i> link
+            <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-light" do %>
+              <i class="fa-solid fa-right-to-bracket"></i> log out
             <% end %>
           </li>
         </ul>
