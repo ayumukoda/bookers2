@@ -1,4 +1,6 @@
 <main>
+    <!--サインアウトのフラッシュメッセージの場所は検討-->
+    <p id="notice"><%= notice %></p>
     <div class="container">
         <div class="row">
             <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
@@ -8,21 +10,12 @@
                 inpressions , and emotions</p>
                 <p>about various books!</p>
                 <div class="row">
-                <a class="btn btn-info btn-sm btn-block mb-3 sign_in" href="/users/sign_in">Log in</a>
+                    <%= link_to "Log in", new_user_session_path, class:"btn btn-info btn-sm btn-block mb-3 sign_in" %>
                 </div>
                 <div class="row">
-                <a class="btn btn-success btn-sm btn-block sign_up" href="/users/sign_up">Sign up</a>
+                    <%= link_to "Sign up", new_user_registration_path, class:"btn btn-success success btn-sm btn-block sign_up, col-xs-10 col-xs-offset-1" %>
                 </div>
             </div>
         </div>
     </div>
 </main>
-<footer>
-    <div class="container mt-5">
-        <div class="row">
-            <div class="mx-auto">
-                <p>CopyRight Infratop.inc</p>
-            </div>
-        </div>
-    </div>
-</footer>
