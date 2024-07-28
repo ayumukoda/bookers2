@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   
   before_action :authenticate_user!#ログインしていなければログインページにリダイレクトする
+  before_action :is_matching_login_user, only: [:edit]
   
   def create
     @book = Book.new(book_params)
@@ -8,6 +9,7 @@ class BooksController < ApplicationController
     if  @book.save
         redirect_to book_path(@book.id), notice: 'book was successfully created'
     else
+      @books = Book.all
       render "index"#indexページに戻す
     end
   end
@@ -25,11 +27,6 @@ class BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
-    if @book.user == current_user #urlの入力で画面に飛ばせない
-      render "edit"
-    else
-      redirect_to root_path#indexページにもどす
-    end
   end
   
    def update
@@ -52,5 +49,12 @@ class BooksController < ApplicationController
   
   def book_params
     params.require(:book).permit(:title, :body)
+  end
+  
+  def is_matching_login_user
+    @book = Book.find(params[:id])
+    unless @book.user.id == current_user.id
+      redirect_to books_path
+    end
   end
 end
